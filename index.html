@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>AlfaSharksFlow® - Robô de Investimentos Automático para Mini Índice Bovespa | 30 Dias Grátis</title>
+    <meta name="description" content="Robô de investimentos 100% automático para Mini Índice Bovespa. Algoritmo avançado com IA, execução em milésimos de segundos. Teste grátis por 30 dias. Garantia incondicional.">
+    <meta name="keywords" content="robô investimentos, mini índice bovespa, trading automático, algoritmo IA, investimentos automatizados, robô trader, AlfaSharksFlow, Nelogica, ProfitPro">
+    <meta name="author" content="AlfaSharksFlow">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alfasharksflow.com/">
+    <meta property="og:title" content="AlfaSharksFlow® - Robô de Investimentos Automático | 30 Dias Grátis">
+    <meta property="og:description" content="Robô de investimentos 100% automático para Mini Índice Bovespa. Algoritmo avançado com IA, execução em milésimos de segundos. Teste grátis por 30 dias.">
+    <meta property="og:image" content="https://alfasharksflow.com/logo_alfasharksflow.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://alfasharksflow.com/">
+    <meta property="twitter:title" content="AlfaSharksFlow® - Robô de Investimentos Automático | 30 Dias Grátis">
+    <meta property="twitter:description" content="Robô de investimentos 100% automático para Mini Índice Bovespa. Algoritmo avançado com IA, execução em milésimos de segundos. Teste grátis por 30 dias.">
+    <meta property="twitter:image" content="https://alfasharksflow.com/logo_alfasharksflow.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo_alfasharksflow.png">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AlfaSharksFlow",
+      "description": "Robô de investimentos automático para Mini Índice Bovespa com algoritmo avançado e IA",
+      "url": "https://alfasharksflow.com",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Windows",
+      "offers": {
+        "@type": "Offer",
+        "price": "590",
+        "priceCurrency": "BRL",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "150"
+      }
+    }
+    </script>
+
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e3c72;
+            --secondary-blue: #2a5298;
+            --primary-green: #4CAF50;
+            --accent-green: #45a049;
+            --light-green: #66BB6A;
+            --dark-blue: #1a2f5c;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --text-muted: #6c757d;
+            --background-light: #f8f9fa;
+            --background-white: #ffffff;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 8px 25px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 15px 35px rgba(0,0,0,0.2);
+            --border-radius: 12px;
+            --border-radius-large: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhanced Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+        h4 { font-size: clamp(1.25rem, 2.5vw, 2rem); }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 36px;
+            border-radius: var(--border-radius-large);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+            color: var(--text-light);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--text-light);
+        }
+
+        .btn-youtube {
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            color: var(--text-light);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCB045);
+            color: var(--text-light);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            color: var(--text-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* Icon styles for buttons */
+        .btn-icon i {
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--primary-green) 100%);
+            color: var(--text-light);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('background_graph.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(255,255,255,0.1), transparent);
+            z-index: 2;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo img {
+            height: 90px;
+            margin-right: 25px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .logo-text {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .header .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .platform-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .platform-info img {
+            height: 70px;
+            margin-left: 25px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        /* Test Free Section - Now First */
+        .test-free-section {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            color: #333; /* Cor mais escura para melhor contraste */
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .test-free-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .test-free-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .test-free-badge {
+            display: inline-block;
+            background: #333; /* Fundo mais escuro para melhor contraste */
+            color: #FFD700;
+            padding: 12px 30px;
+            border-radius: var(--border-radius-large);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .test-free-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            background: linear-gradient(45deg, #333, #222); /* Gradiente mais escuro */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .test-free-description {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+            color: #333; /* Cor mais escura para melhor contraste */
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--primary-green) 100%);
+            color: var(--text-light);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('background_graph.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 40px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .highlight {
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 900;
+            margin: 40px 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .algorithm-text {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--background-white);
+            padding: 120px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .features-content h2 {
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+        }
+
+        .features-content h3 {
+            color: var(--secondary-blue);
+            margin-bottom: 50px;
+            line-height: 1.3;
+        }
+
+        .feature-item {
+            margin-bottom: 35px;
+            padding: 30px;
+            border-left: 5px solid var(--primary-green);
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+            border-left-color: var(--accent-green);
+        }
+
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .feature-item h4 i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .feature-item p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #495057; /* Darker gray for better legibility */
+        }
+
+        .features-image {
+            text-align: center;
+            position: relative;
+        }
+
+        .features-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            border-radius: var(--border-radius-large);
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .features-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            z-index: 2;
+        }
+
+        .features-cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Results Section */
+        .results {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--primary-green) 100%);
+            color: var(--text-light);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .results::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('background_graph_2.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .results-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .results h2 {
+            margin-bottom: 60px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .result-item {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: var(--border-radius-large);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .result-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .result-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-item h3 i {
+            margin-right: 10px;
+        }
+
+        .result-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--background-light);
+            padding: 120px 0;
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--primary-blue);
+            font-weight: 900;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            border: none;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            background: var(--background-white);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-medium);
+        }
+
+        .faq-question {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+        }
+
+        .faq-question i {
+            margin-right: 20px;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .faq-answer {
+            padding: 30px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            background: var(--background-white);
+            color: #495057; /* Darker gray for better legibility */
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 1px solid #ffeaa7;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin: 60px 0;
+            box-shadow: var(--shadow-light);
+        }
+
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .warning-box h3 i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .warning-box p {
+            color: #856404;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Exclusive Section */
+        .exclusive {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--primary-green) 100%);
+            color: var(--text-light);
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .exclusive::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('background_graph_3.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .exclusive-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .exclusive h2 {
+            margin-bottom: 25px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .exclusive h3 {
+            margin-bottom: 60px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        .exclusive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 80px 0;
+        }
+
+        .exclusive-item {
+            background: rgba(255,255,255,0.1);
+            padding: 50px 30px;
+            border-radius: var(--border-radius-large);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .exclusive-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .exclusive-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exclusive-item h4 i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 50%, var(--secondary-blue) 100%);
+            color: var(--text-light);
+            padding: 80px 0 40px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('background_graph_4.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-item h3 i {
+            margin-right: 10px;
+        }
+
+        .social-links {
+            margin: 50px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 20px;
+            color: var(--text-light);
+            font-size: 2.5rem;
+            text-decoration: none;
+            transition: var(--transition);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .social-links a:hover {
+            transform: scale(1.3) translateY(-5px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Conversion Buttons Floating */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-cta .btn {
+            border-radius: 50px;
+            padding: 20px 30px;
+            font-size: 1rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .header {
+                padding: 60px 0;
+                min-height: 90vh;
+            }
+
+            .logo {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo img {
+                height: 70px;
+                margin-right: 0;
+            }
+
+            .logo-text {
+                font-size: 2.5rem;
+            }
+
+            .platform-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .platform-info img {
+                margin-left: 0;
+                height: 50px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .features-image {
+                order: -1;
+            }
+
+            .exclusive-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                padding: 16px 32px;
+                font-size: 1rem;
+            }
+
+            .floating-cta {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .floating-cta .btn {
+                padding: 15px 25px;
+                font-size: 0.9rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .result-item {
+                padding: 30px 20px;
+            }
+
+            .test-free-section {
+                padding: 60px 0;
+            }
+
+            .cta-section {
+                padding: 80px 0;
+            }
+
+            .features, .faq, .exclusive {
+                padding: 80px 0;
+            }
+
+            .footer {
+                padding: 60px 0 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                padding: 14px 28px;
+                font-size: 0.95rem;
+            }
+
+            .feature-item {
+                padding: 20px;
+            }
+
+            .faq-question {
+                padding: 20px;
+                font-size: 1.1rem;
+            }
+
+            .faq-answer {
+                padding: 20px;
+            }
+
+            .exclusive-item {
+                padding: 30px 20px;
+            }
+
+            .result-item {
+                padding: 25px 15px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Intersection Observer animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo_alfasharksflow.png" alt="AlfaSharksFlow Logo">
+                    <span class="logo-text">AlfaSharksFlow®</span>
+                </div>
+                <h1>Robô de Investimentos para Mini Índice Bovespa</h1>
+                <p class="subtitle">Operações automatizadas com alta precisão no mercado futuro.</p>
+                <div class="platform-info">
+                    <span style="font-size: 1.5rem; font-weight: 700;">Plataforma ProfitPro Grátis</span>
+                    <img src="logo_nelogica.png" alt="Nelogica Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Free Section - Now First -->
+    <section class="test-free-section">
+        <div class="container">
+            <div class="test-free-content animate-on-scroll">
+                <div class="test-free-badge">🎯 Oferta Especial</div>
+                <h2 class="test-free-title">30 dias de teste grátis!</h2>
+                <p class="test-free-description">Comece a pagar apenas após 30 dias. Se você não gostar do desempenho pode solicitar o cancelamento sem qualquer custo. Garantia incondicional!</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary btn-icon"><i class="fas fa-money-bill-wave"></i>Começar Teste Grátis</a>
+                    <a href="#" class="btn btn-whatsapp btn-icon"><i class="fab fa-whatsapp"></i>Falar com Especialista</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2>Já imaginou poder adquirir a licença de um robô que opera na bolsa de valores por você e faz seu dinheiro render?</h2>
+                <div class="highlight">Tudo 100% automático!</div>
+                <p class="algorithm-text">Algoritmo avançado com análise de dados em tempo real</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-whatsapp btn-icon"><i class="fab fa-whatsapp"></i>Fale com nosso time!</a>
+                    <a href="#" class="btn btn-outline">Ver Demonstração</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="features-content animate-on-scroll">
+                    <h2>Por que investir em uma automação de investimentos?</h2>
+                    <h3>Revolucione sua forma de investir com tecnologia de ponta e inteligência artificial!</h3>
+                    
+                    <div class="feature-item">
+                        <h4><i class="fas fa-brain"></i>Eliminação do Fator Emocional</h4>
+                        <p>Nosso robô executa estratégias baseadas apenas em dados e algoritmos, eliminando completamente decisões influenciadas por medo, ganância ou ansiedade - os principais inimigos dos traders humanos.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h4><i class="fas fa-robot"></i>Monitoramento Contínuo do Mercado com IA</h4>
+                        <p>Enquanto você vive sua vida, nosso robô trabalha 24/7 analisando milhares de dados por segundo, identificando oportunidades que passariam despercebidas pelo olho humano.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <h4><i class="fas fa-bolt"></i>Execução em Milésimos de Segundos</h4>
+                        <p>Velocidade de execução incomparável, aproveitando oportunidades de mercado que duram apenas frações de segundo, impossíveis de serem capturadas manualmente.</p>
+                    </div>
+                </div>
+                
+                <div class="features-image animate-on-scroll">
+                    <img src="profitpro_screenshot.png" alt="ProfitPro Screenshot">
+                </div>
+            </div>
+            
+            <div class="features-cta animate-on-scroll">
+                <a href="#" class="btn btn-primary btn-icon"><i class="fas fa-play-circle"></i>Ver Robô em Operação</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <div class="results-content animate-on-scroll">
+                <h2>Resultados Comprovados e Transparentes</h2>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <h3><i class="fas fa-chart-line"></i>Performance Consistente</h3>
+                        <img src="performance_graph.png" alt="Performance Graph">
+                    </div>
+                    
+                    <div class="result-item">
+                        <h3><i class="fas fa-shield-alt"></i>Gestão de Risco Inteligente</h3>
+                        <img src="risk_management.png" alt="Risk Management">
+                    </div>
+                    
+                    <div class="result-item">
+                        <h3><i class="fas fa-trophy"></i>Resultados Reais</h3>
+                        <img src="real_results.png" alt="Real Results">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="animate-on-scroll">Perguntas Frequentes</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <i class="fas fa-question-circle"></i>Preciso ter conhecimento em mercado financeiro para utilizar o robô?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! Nosso robô foi desenvolvido para operar de forma 100% automática. Você não precisa ter qualquer conhecimento prévio. Nosso time oferece suporte completo para instalação e configuração, e o robô faz todo o trabalho sozinho.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <i class="fas fa-question-circle"></i>Qual o valor mínimo para começar a operar?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Recomendamos um capital inicial de R$ 5.000,00 para operar com segurança e seguir adequadamente nossa gestão de risco. No entanto, é possível começar com valores menores, desde que esteja ciente dos riscos inerentes ao mercado.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <i class="fas fa-question-circle"></i>Como é feita a instalação do robô?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nossa equipe técnica oferece suporte completo para instalação via AnyDesk/TeamViewer. O processo é rápido (cerca de 15 minutos) e não requer conhecimentos técnicos. Você também receberá um manual detalhado com passo a passo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <button class="faq-question">
+                        <i class="fas fa-question-circle"></i>O robô opera em qual horário do mercado?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nosso robô opera exclusivamente no período da manhã (10h às 11h20) e à tarde (16h às 17h), horários de maior liquidez e volatilidade do Mini Índice, onde nossas estratégias são mais eficientes.</p>
+                    </div>
+                </div>
+                
+                <div class="warning-box animate-on-scroll">
+                    <h3><i class="fas fa-exclamation-triangle"></i>AVISO LEGAL</h3>
+                    <p>Operações no mercado futuro envolvem riscos de perda. Past performance não é garantia de resultados futuros. Nossos resultados são reais, mas variam de acordo com o capital aplicado, condições de mercado e aderência estrita às regras de gestão de risco. Recomendamos que opere apenas com capital que você pode perder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Section -->
+    <section class="exclusive">
+        <div class="container">
+            <div class="exclusive-content animate-on-scroll">
+                <h2>O que você recebe ao adquirir o AlfaSharksFlow®</h2>
+                <h3>Um pacote completo para seu sucesso nos investimentos</h3>
+                
+                <div class="exclusive-grid">
+                    <div class="exclusive-item">
+                        <h4><i class="fas fa-code"></i>Robô AlfaSharksFlow®</h4>
+                        <p>Acesso completo ao software com algoritmos proprietários de última geração, atualizações gratuitas por 12 meses e suporte técnico prioritário.</p>
+                    </div>
+                    
+                    <div class="exclusive-item">
+                        <h4><i class="fas fa-graduation-cap"></i>Treinamento Completo</h4>
+                        <p>Videoaulas detalhadas sobre configuração, operação e gestão de risco, além de manual completo em PDF com todas as instruções necessárias.</p>
+                    </div>
+                    
+                    <div class="exclusive-item">
+                        <h4><i class="fas fa-users"></i>Acesso à Comunidade</h4>
+                        <p>Participe do nosso grupo exclusivo no WhatsApp para troca de experiências, divulgação de setups e suporte em tempo real da nossa equipe.</p>
+                    </div>
+                    
+                    <div class="exclusive-item">
+                        <h4><i class="fas fa-desktop"></i>Sala Operacional</h4>
+                        <p>Acesso à nossa sala operacional com acompanhamento em tempo real das operações, análise de mercado e sugestões de melhores entradas.</p>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary btn-icon"><i class="fas fa-shopping-cart"></i>Adquirir Agora</a>
+                    <a href="#" class="btn btn-outline">Tirar Dúvidas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <div class="footer-item animate-on-scroll">
+                        <h3><i class="fas fa-lock"></i>Compra 100% Segura</h3>
+                        <p>Seus dados estão protegidos por criptografia avançada. Ambiente seguro e certificado.</p>
+                    </div>
+                    
+                    <div class="footer-item animate-on-scroll">
+                        <h3><i class="fas fa-headset"></i>Suporte Especializado</h3>
+                        <p>Equipe técnica disponível para auxiliar no que for necessário. Resposta rápida e eficiente.</p>
+                    </div>
+                    
+                    <div class="footer-item animate-on-scroll">
+                        <h3><i class="fas fa-sync-alt"></i>Garantia Incondicional</h3>
+                        <p>Insatisfeito com os resultados? Reembolso total em até 30 dias sem questionamentos.</p>
+                    </div>
+                </div>
+                
+                <div class="social-links animate-on-scroll">
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" title="Comunidade WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" title="Sala Operacional"><i class="fas fa-video"></i></a>
+                </div>
+                
+                <div class="copyright animate-on-scroll">
+                    <p>© 2023 AlfaSharksFlow® - Todos os direitos reservados.</p>
+                    <p>CNPJ: 00.000.000/0000-00 - Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook.</p>
+                    <p>Depois de deixar o Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta animate-on-scroll">
+        <a href="#" class="btn btn-whatsapp btn-icon"><i class="fab fa-whatsapp"></i>Falar no WhatsApp</a>
+    </div>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const answer = button.nextElementSibling;
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    if (item !== answer) {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                answer.classList.toggle('active');
+            });
+        });
+
+        // Animate on scroll functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
