@@ -897,9 +897,9 @@
             }
 
             .table-container td:nth-of-type(1)::before { content: "Categoria:"; }
-            .table-container td:nth-of-type(2)::before { content: "Porcentagem:"; }
-            .table-container td:nth-of-type(3)::before { content: "Quantidade:"; }
-            .table-container td:nth-of-type(4)::before { content: "Vesting:"; }
+            td:nth-of-type(2)::before { content: "Porcentagem:"; }
+            td:nth-of-type(3)::before { content: "Quantidade:"; }
+            td:nth-of-type(4)::before { content: "Vesting:"; }
         }
 
         /* Responsividade para telas muito pequenas */
@@ -987,7 +987,7 @@
             </ul>
             
             <div class="nav-actions">
-                <!-- Botão de compra removido do cabeçalho -->
+                <!-- Botão de compra removido do cabeçalho conforme solicitado -->
             </div>
         </div>
     </nav>
@@ -1010,15 +1010,15 @@
                         <div class="countdown-label">Dias</div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="hours">13</div>
+                        <div class="countdown-number" id="hours">00</div>
                         <div class="countdown-label">Horas</div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">29</div>
+                        <div class="countdown-number" id="minutes">00</div>
                         <div class="countdown-label">Minutos</div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="seconds">56</div>
+                        <div class="countdown-number" id="seconds">00</div>
                         <div class="countdown-label">Segundos</div>
                     </div>
                 </div>
@@ -1176,34 +1176,34 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Venda Pública</strong></td>
-                                <td>45%</td>
-                                <td>45M SMAI</td>
-                                <td>Imediato TGE</td>
+                                <td data-label="Categoria"><strong>Venda Pública</strong></td>
+                                <td data-label="Porcentagem">45%</td>
+                                <td data-label="Quantidade">45M SMAI</td>
+                                <td data-label="Vesting">Imediato TGE</td>
                             </tr>
                             <tr>
-                                <td><strong>Equipe & Desenvolvimento</strong></td>
-                                <td>15%</td>
-                                <td>15M SMAI</td>
-                                <td>36m (12m cliff)</td>
+                                <td data-label="Categoria"><strong>Equipe & Desenvolvimento</strong></td>
+                                <td data-label="Porcentagem">15%</td>
+                                <td data-label="Quantidade">15M SMAI</td>
+                                <td data-label="Vesting">36m (12m cliff)</td>
                             </tr>
                             <tr>
-                                <td><strong>Liquidez Travada</strong></td>
-                                <td>15%</td>
-                                <td>15M SMAI</td>
-                                <td>24 meses</td>
+                                <td data-label="Categoria"><strong>Liquidez Travada</strong></td>
+                                <td data-label="Porcentagem">15%</td>
+                                <td data-label="Quantidade">15M SMAI</td>
+                                <td data-label="Vesting">24 meses</td>
                             </tr>
                             <tr>
-                                <td><strong>Recompensas/Marketing</strong></td>
-                                <td>15%</td>
-                                <td>15M SMAI</td>
-                                <td>Gradual</td>
+                                <td data-label="Categoria"><strong>Recompensas/Marketing</strong></td>
+                                <td data-label="Porcentagem">15%</td>
+                                <td data-label="Quantidade">15M SMAI</td>
+                                <td data-label="Vesting">Gradual</td>
                             </tr>
                             <tr>
-                                <td><strong>Treasury/Reserva</strong></td>
-                                <td>10%</td>
-                                <td>10M SMAI</td>
-                                <td>Governança</td>
+                                <td data-label="Categoria"><strong>Treasury/Reserva</strong></td>
+                                <td data-label="Porcentagem">10%</td>
+                                <td data-label="Quantidade">10M SMAI</td>
+                                <td data-label="Vesting">Governança</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1380,6 +1380,171 @@
         </div>
     </section>
 
+    <!-- Missão e Valores -->
+    <section class="section" id="mission">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossa Missão e Valores</h2>
+                <p class="section-subtitle">Democratizando o acesso a tecnologias avançadas de trading e construindo o futuro financeiro</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">Nossa Missão</h3>
+                    <p class="card-description">
+                        Democratizar o acesso a tecnologias avançadas de trading através da inteligência artificial, 
+                        proporcionando ferramentas profissionais para traders de todos os níveis e construindo um 
+                        ecossistema financeiro mais justo e eficiente.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="card-title">Nossos Valores</h3>
+                    <p class="card-description">
+                        <strong>Transparência:</strong> Operações claras e auditáveis<br>
+                        <strong>Inovação:</strong> Tecnologia de ponta em IA<br>
+                        <strong>Inclusão:</strong> Acesso para todos os perfis<br>
+                        <strong>Segurança:</strong> Proteção máxima dos investimentos<br>
+                        <strong>Educação:</strong> Capacitação contínua da comunidade
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipe -->
+    <section class="section" style="background: var(--bg-secondary);" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Conheça Nossa Equipe</h2>
+                <p class="section-subtitle">Profissionais experientes em tecnologia, finanças e blockchain trabalhando para revolucionar o trading</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="width: 100px; height: 100px; background: var(--gradient-primary); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="card-title">CEO & Founder</h3>
+                        <p style="color: var(--accent-gold); font-weight: 600; margin-bottom: 1rem;">Especialista em IA e Trading</p>
+                    </div>
+                    <p class="card-description">
+                        Mais de 10 anos de experiência em mercados financeiros e desenvolvimento de algoritmos de trading. 
+                        Formação em Engenharia de Software e MBA em Finanças.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="width: 100px; height: 100px; background: var(--gradient-primary); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="card-title">CTO</h3>
+                        <p style="color: var(--accent-gold); font-weight: 600; margin-bottom: 1rem;">Arquiteto de Sistemas</p>
+                    </div>
+                    <p class="card-description">
+                        Especialista em arquitetura de sistemas distribuídos e blockchain. Responsável pela infraestrutura 
+                        tecnológica e desenvolvimento dos robôs de IA.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="width: 100px; height: 100px; background: var(--gradient-primary); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="card-title">Head of Trading</h3>
+                        <p style="color: var(--accent-gold); font-weight: 600; margin-bottom: 1rem;">Estrategista Quantitativo</p>
+                    </div>
+                    <p class="card-description">
+                        Trader profissional com experiência em fundos quantitativos. Responsável pelo desenvolvimento 
+                        das estratégias de trading e análise de performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Empresarial -->
+    <section class="section" id="business-contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contato Empresarial</h2>
+                <p class="section-subtitle">Entre em contato conosco para parcerias, investimentos ou oportunidades de negócio</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="card-title">Parcerias Estratégicas</h3>
+                    <p class="card-description">
+                        Interessado em estabelecer parcerias com a SharkMind AI? Estamos abertos a colaborações 
+                        com corretoras, fundos de investimento e empresas de tecnologia.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <p><strong>Email:</strong> partnerships@sharkmind.ai</p>
+                        <p><strong>WhatsApp:</strong> +55 (11) 99999-9999</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="card-title">Investidores Institucionais</h3>
+                    <p class="card-description">
+                        Para investidores institucionais interessados em participar do crescimento da SharkMind AI 
+                        e do ecossistema SMAI Token.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <p><strong>Email:</strong> investors@sharkmind.ai</p>
+                        <p><strong>Telegram:</strong> @SharkMindInvestors</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3 class="card-title">Imprensa e Mídia</h3>
+                    <p class="card-description">
+                        Jornalistas, influenciadores e criadores de conteúdo interessados em cobrir a SharkMind AI 
+                        e as inovações em trading com IA.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <p><strong>Email:</strong> press@sharkmind.ai</p>
+                        <p><strong>Kit de Imprensa:</strong> Disponível sob solicitação</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="card-title">Suporte Técnico</h3>
+                    <p class="card-description">
+                        Suporte especializado para usuários dos robôs de trading, holders do SMAI Token e 
+                        participantes do ecossistema.
+                    </p>
+                    <div style="margin-top: 1.5rem;">
+                        <p><strong>Email:</strong> support@sharkmind.ai</p>
+                        <p><strong>Discord:</strong> SharkMind Community</p>
+                        <p><strong>Horário:</strong> 24/7 para holders Premium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer" id="contact">
         <div class="footer-content">
@@ -1395,10 +1560,9 @@
     <script>
         // Countdown timer
         function updateCountdown() {
-            const now = new Date().getTime();
-            const targetTime = now + (13 * 60 * 60 * 1000) + (29 * 60 * 1000) + (56 * 1000); // 13h 29m 56s from now
-            
-            const distance = targetTime - now;
+            const now = new Date();
+            const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+            const distance = midnight - now;
             
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -1453,6 +1617,33 @@
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download functionality
+        function downloadHTML() {
+            const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'SharkMindAI_SMAI_Site_Melhorado.html';
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+            a.remove();
+        }
+
+        // Add download functionality to buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtns = document.querySelectorAll('.btn-outline');
+            downloadBtns.forEach(btn => {
+                if (btn.textContent.includes('PDF')) {
+                    btn.addEventListener('click', function(e) {
+                        if (!e.target.closest('[onclick]')) {
+                            downloadHTML();
+                        }
                     });
                 }
             });
