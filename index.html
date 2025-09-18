@@ -838,6 +838,68 @@
             .package-price {
                 font-size: 2rem;
             }
+            
+            /* Tabela Responsiva - Sem rolagem horizontal */
+            .table-container {
+                overflow-x: hidden;
+            }
+
+            .table-container table, 
+            .table-container thead, 
+            .table-container tbody, 
+            .table-container th, 
+            .table-container td, 
+            .table-container tr {
+                display: block;
+            }
+
+            .table-container thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            .table-container tr {
+                border: 1px solid var(--border-subtle);
+                margin-bottom: 1rem;
+                border-radius: var(--border-radius);
+                overflow: hidden;
+                background: var(--bg-secondary);
+            }
+
+            .table-container td {
+                border: none;
+                border-bottom: 1px solid var(--border-subtle);
+                position: relative;
+                padding: 1rem 1rem 1rem 45%;
+                text-align: right;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                min-height: 50px;
+            }
+
+            .table-container td:last-child {
+                border-bottom: none;
+            }
+
+            .table-container td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 1rem;
+                width: 40%;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: 600;
+                color: var(--primary-blue);
+                display: flex;
+                align-items: center;
+            }
+
+            .table-container td:nth-of-type(1)::before { content: "Categoria:"; }
+            .table-container td:nth-of-type(2)::before { content: "Porcentagem:"; }
+            .table-container td:nth-of-type(3)::before { content: "Quantidade:"; }
+            .table-container td:nth-of-type(4)::before { content: "Vesting:"; }
         }
 
         /* Responsividade para telas muito pequenas */
@@ -874,6 +936,17 @@
             .btn {
                 padding: 0.6rem 0.8rem;
                 font-size: 0.8rem;
+            }
+            
+            .table-container td {
+                padding: 0.8rem 0.8rem 0.8rem 40%;
+                font-size: 0.85rem;
+            }
+
+            .table-container td::before {
+                left: 0.8rem;
+                width: 35%;
+                font-size: 0.85rem;
             }
         }
 
@@ -914,9 +987,7 @@
             </ul>
             
             <div class="nav-actions">
-                <a href="#packages" class="btn btn-primary">
-                    <i class="fas fa-coins"></i> Comprar Token
-                </a>
+                <!-- Botão de compra removido do cabeçalho -->
             </div>
         </div>
     </nav>
@@ -927,8 +998,6 @@
             <div class="hero-content">
                 <h1>SharkMind AI: A Revolução do Trading com IA</h1>
                 <p class="subtitle">Desbloqueie o Futuro Financeiro com o SMAI Token e participe do ecossistema de trading mais avançado do mercado</p>
-               
-                </div>
             </div>
             
             <div class="hero-card">
@@ -1184,9 +1253,9 @@
                 
                 <div class="roadmap-item">
                     <div class="roadmap-content">
-                        <div class="roadmap-phase">Fase 2 - Dashboards e Tecnologias</div>
+                        <div class="roadmap-phase">Fase 2 - Chat AI e Análise de Mercados</div>
                         <div class="roadmap-description">
-                            Desenvolvimento de dashboards e outros programas para análise, declaração de impostos e todo tipo de tecnologia para agregar valor a quem opera no mercado. Plataforma operacional completa.
+                            Nossa maior aposta é o lançamento de um chat AI focado em análise de mercados e acompanhamento contínuo. O chat terá todo o foco em ser um estrategista investidor, auxiliando pessoas que sabem ou não investir. Além disso, continuaremos o desenvolvimento de dashboards e outras tecnologias para agregar valor a quem opera no mercado, visando uma plataforma operacional completa.
                         </div>
                     </div>
                     <div class="roadmap-dot"></div>
@@ -1301,141 +1370,10 @@
                     <div class="card-icon" style="background: var(--gradient-gold);">
                         <i class="fas fa-chart-network"></i>
                     </div>
-                    <h3 class="card-title" style="color: var(--accent-gold);">Corretora Especializada</h3>
+                    <h3 class="card-title" style="color: var(--accent-gold);">Corretora Integrada</h3>
                     <p class="card-description" style="color: rgba(255,255,255,0.9);">
-                        Corretora de valores mobiliários focada em traders profissionais, com execução institucional, 
-                        spreads ultra-competitivos e integração total com nossos robôs de IA e dashboards analíticos.
-                    </p>
-                </div>
-                
-                <div class="card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
-                    <div class="card-icon" style="background: var(--gradient-gold);">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="card-title" style="color: var(--accent-gold);">Tecnologia Integrada</h3>
-                    <p class="card-description" style="color: rgba(255,255,255,0.9);">
-                        Todas as nossas tecnologias de IA, robôs de trading, dashboards e análises estarão nativamente 
-                        integradas na plataforma bancária e de corretagem, oferecendo uma experiência única no mercado.
-                    </p>
-                </div>
-                
-                <div class="card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
-                    <div class="card-icon" style="background: var(--gradient-gold);">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 class="card-title" style="color: var(--accent-gold);">Expansão Global</h3>
-                    <p class="card-description" style="color: rgba(255,255,255,0.9);">
-                        Licenças bancárias e de corretagem em múltiplas jurisdições, permitindo atender traders 
-                        profissionais em todo o mundo com os mais altos padrões de segurança e regulamentação.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre a Empresa -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nossa Missão e Oportunidade</h2>
-                <p class="section-subtitle">Democratizando o acesso aos investimentos no Brasil</p>
-            </div>
-            
-            <div class="grid grid-2">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3 class="card-title">Nossa Missão</h3>
-                    <p class="card-description">
-                        Fazer com que pessoas que ainda não investem comecem a investir e que aqueles que não têm resultados, passem a ter. 
-                        Ajudamos pessoas a ganharem dinheiro investindo seu capital de forma inteligente e segura.
-                    </p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="card-title">Potencial de Mercado</h3>
-                    <p class="card-description">
-                        O mercado financeiro brasileiro possui um vasto potencial de expansão, com menos de 10% de toda a população investindo atualmente.
-                        A SharkMind AI está posicionada para capitalizar essa lacuna com soluções acessíveis e eficazes.
-                    </p>
-                </div>
-            </div>
-
-            <div class="section-header" style="margin-top: 4rem;">
-                <h2 class="section-title">Equipe e Estrutura</h2>
-                <p class="section-subtitle">Liderança experiente e parceiros estratégicos</p>
-            </div>
-            
-            <div class="grid grid-3">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3 class="card-title">Marcelo Sperb - CEO & Fundador</h3>
-                    <p class="card-description">
-                        Ex-publicitário, programador de site e operador no mercado desde 2019, com uma comunidade de mais de 5k seguidores. 
-                        Responsável pelo desenvolvimento e marketing da empresa. Detentor de 98% da empresa.
-                    </p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="card-title">Mariel Machado - Comercial & Parcerias</h3>
-                    <p class="card-description">
-                        Responsável por clientes, afiliados e outros parceiros. 
-                        Parceira estratégica com 1% de participação na empresa.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3 class="card-title">Rafael Sanatayana - Jurídico</h3>
-                    <p class="card-description">
-                        Advogado responsável pela parte burocrática e administrativa da empresa. 
-                        Parceiro estratégico com 1% de participação na empresa.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Fale Conosco</h2>
-                <p class="section-subtitle">Entre em contato para mais informações sobre o SMAI Token e o ecossistema SharkMind AI</p>
-            </div>
-            
-            <div class="grid grid-2">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3 class="card-title">Contato Empresarial</h3>
-                    <p class="card-description">
-                        <strong>SharkMind AI</strong><br>
-                        Email: <a href="mailto:sharkmindai@gmail.com" style="color: var(--primary-blue);">sharkmindai@gmail.com</a><br>
-                        WhatsApp: <a href="https://wa.me/5551981624122" style="color: var(--primary-blue);">+55 51 98162-4122</a><br>
-                        Contato direto com a empresa
-                    </p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="card-title">Governança & Transparência</h3>
-                    <p class="card-description">
-                        Gestão híbrida: empresa estruturada com relatórios trimestrais + DAO via token SMAI com votações on-chain. Auditorias de contrato, bug bounties e dashboard público garantem confiança total.
+                        Plataforma de trading com execução ultra-rápida, spreads competitivos e integração total com nossos robôs de IA. 
+                        Tudo em um só lugar para maximizar sua experiência de trading.
                     </p>
                 </div>
             </div>
@@ -1443,17 +1381,40 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="footer-content">
-            <p>© 2025 SharkMind AI. Todos os direitos reservados.</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">
-                Documento interativo — Pitch Corporativo + Tokenização SMAI. Não constitui oferta de investimento. 
-                Consulte assessoria jurídica e financeira antes de investir.
-            </p>
+            <h3 style="margin-bottom: 1rem; color: var(--accent-gold);">SharkMind AI</h3>
+            <p>Revolucionando o mercado financeiro com inteligência artificial e tecnologia blockchain. Junte-se à nossa comunidade e faça parte do futuro do trading.</p>
+            <div style="margin-top: 2rem;">
+                <p>&copy; 2024 SharkMind AI. Todos os direitos reservados.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">SMAI Token - BEP-20 | Contrato auditado e verificado</p>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const targetTime = now + (13 * 60 * 60 * 1000) + (29 * 60 * 1000) + (56 * 1000); // 13h 29m 56s from now
+            
+            const distance = targetTime - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -1464,32 +1425,7 @@
             }
         });
 
-        // Countdown timer
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const targetDate = new Date(now + (24 * 60 * 60 * 1000)).getTime(); // 24 hours from now
-            const distance = targetDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1497,7 +1433,10 @@
                     entry.target.classList.remove('hidden');
                 }
             });
-        }, observerOptions);
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
         // Observe all cards and sections
         document.querySelectorAll('.card, .section').forEach(element => {
@@ -1519,33 +1458,6 @@
             });
         });
 
-        // Download functionality
-        function downloadHTML() {
-            const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'SharkMindAI_SMAI_Site_Melhorado.html';
-            document.body.appendChild(a);
-            a.click();
-            URL.revokeObjectURL(url);
-            a.remove();
-        }
-
-        // Add download functionality to buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            const downloadBtns = document.querySelectorAll('.btn-outline');
-            downloadBtns.forEach(btn => {
-                if (btn.textContent.includes('PDF')) {
-                    btn.addEventListener('click', function(e) {
-                        if (!e.target.closest('[onclick]')) {
-                            downloadHTML();
-                        }
-                    });
-                }
-            });
-        });
-
         // Package selection
         document.querySelectorAll('.package-card .btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -1556,3 +1468,4 @@
     </script>
 </body>
 </html>
+
