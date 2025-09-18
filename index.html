@@ -1,665 +1,1558 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SharkMind AI — Empresa & SMAI Token (BEP-20) Pitch Deck</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-primary: #0a0f1c;
-      --bg-secondary: #0f1729;
-      --bg-tertiary: #1a2332;
-      --card-bg: linear-gradient(145deg, #0f1729 0%, #1a2332 100%);
-      --accent-primary: #00d4ff;
-      --accent-secondary: #0099cc;
-      --accent-gold: #ffd700;
-      --text-primary: #ffffff;
-      --text-secondary: #b8c5d6;
-      --text-muted: #7a8ba0;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(0, 212, 255, 0.2);
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.4);
-      --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.6);
-      --gradient-accent: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      --gradient-gold: linear-gradient(135deg, #ffd700, #ffb347);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharkMind AI — Empresa & SMAI Token (BEP-20)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Cores principais */
+            --primary-blue: #0066cc;
+            --secondary-blue: #004d99;
+            --accent-gold: #ffc107;
+            --accent-gold-light: #ffd54f;
+            --dark-blue: #001a33;
+            
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, #0066cc, #004d99);
+            --gradient-gold: linear-gradient(135deg, #ffc107, #ffd54f);
+            --gradient-hero: linear-gradient(135deg, #001a33 0%, #0066cc 50%, #004d99 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+            
+            /* Backgrounds */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-dark: #001a33;
+            
+            /* Textos */
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --text-white: #ffffff;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+            --shadow-glow: 0 0 20px rgba(0,102,204,0.3);
+            
+            /* Bordas */
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --border-subtle: rgba(0,0,0,0.1);
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
-      color: var(--text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 40% 60%, rgba(0, 153, 204, 0.08) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
-    }
+        /* Navegação */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
 
-    .wrap {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-    }
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
 
-    /* Header Styles */
-    header {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: var(--card-bg);
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-card);
-      backdrop-filter: blur(20px);
-      transition: all 0.3s ease;
-    }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    header:hover {
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-2px);
-    }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
 
-    .logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 24px;
-      background: var(--gradient-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--border-accent);
-      box-shadow: 
-        0 0 30px rgba(0, 212, 255, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
 
-    .logo::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transform: rotate(45deg);
-      transition: all 0.6s ease;
-      opacity: 0;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    .logo:hover::before {
-      opacity: 1;
-      transform: rotate(45deg) translate(50%, 50%);
-    }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-    .logo:hover {
-      transform: scale(1.05);
-      box-shadow: 
-        0 0 40px rgba(0, 212, 255, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
 
-    .logo img {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-    }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
 
-    .header-content h1 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 800;
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      font-weight: 500;
-      opacity: 0.9;
-    }
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
 
-    .top-actions {
-      margin-left: auto;
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+        /* Botões */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .btn {
-      background: transparent;
-      border: 2px solid var(--border-accent);
-      color: var(--accent-primary);
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--text-white);
+            box-shadow: var(--shadow-md);
+        }
 
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient-accent);
-      transition: all 0.3s ease;
-      z-index: -1;
-    }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
 
-    .btn:hover::before {
-      left: 0;
-    }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
 
-    .btn:hover {
-      color: white;
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
-    }
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: var(--text-white);
+        }
 
-    /* Card Styles */
-    .card {
-      background: var(--card-bg);
-      padding: 2.5rem;
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-card);
-      margin-bottom: 2rem;
-      backdrop-filter: blur(20px);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+        .btn-gold {
+            background: var(--gradient-gold);
+            color: var(--dark-blue);
+            font-weight: 700;
+            box-shadow: var(--shadow-glow);
+        }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--gradient-accent);
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.4);
+        }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--border-accent);
-    }
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-hero);
+            color: var(--text-white);
+            padding: 8rem 2rem 6rem;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .card:hover::before {
-      opacity: 1;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 102, 204, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-    h2 {
-      color: var(--accent-primary);
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
 
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background: var(--gradient-gold);
-      border-radius: 1px;
-    }
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #ffd54f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    p {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
 
-    strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
-    /* Grid Layout */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* Table Styles */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5rem;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 12px;
-      overflow: hidden;
-    }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
 
-    th, td {
-      padding: 1rem 1.5rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border-subtle);
-    }
+        .hero-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
 
-    th {
-      background: var(--gradient-accent);
-      color: white;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        .hero-card .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
 
-    td {
-      color: var(--text-secondary);
-      transition: all 0.2s ease;
-    }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap; /* Permite quebrar linha em telas muito pequenas */
+        }
 
-    tr:hover td {
-      background: rgba(0, 212, 255, 0.05);
-      color: var(--text-primary);
-    }
+        .countdown-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            min-width: 80px; /* Garante largura mínima */
+            flex: 0 0 auto; /* Não permite encolher */
+        }
 
-    /* List Styles */
-    ul {
-      color: var(--text-secondary);
-      line-height: 1.8;
-      padding-left: 1.5rem;
-    }
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+        }
 
-    li {
-      margin-bottom: 0.5rem;
-      position: relative;
-    }
+        .countdown-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    li::marker {
-      color: var(--accent-primary);
-    }
+        /* Container principal */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    /* Roadmap Styles */
-    .roadmap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
+        /* Seções */
+        .section {
+            padding: 5rem 0;
+        }
 
-    .phase {
-      background: var(--glass-bg);
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid var(--border-subtle);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-    .phase::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--gradient-gold);
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            position: relative;
+        }
 
-    .phase:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--border-accent);
-    }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
 
-    .phase:hover::before {
-      opacity: 1;
-    }
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    .phase strong {
-      color: var(--accent-gold);
-      font-size: 1.1rem;
-      display: block;
-      margin-bottom: 1rem;
-    }
+        /* Cards */
+        .card {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* Code Styles */
-    .code {
-      background: #0d1117;
-      padding: 1.5rem;
-      border-radius: 12px;
-      color: #58a6ff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-      border: 1px solid #21262d;
-      overflow-x: auto;
-    }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-    /* Footer Styles */
-    footer {
-      margin-top: 3rem;
-      padding: 2rem;
-      text-align: center;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border-subtle);
-      background: var(--glass-bg);
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
-    }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
 
-    /* Link Styles */
-    a {
-      color: var(--accent-primary);
-      text-decoration: none;
-      transition: all 0.2s ease;
-      position: relative;
-    }
+        .card:hover::before {
+            opacity: 1;
+        }
 
-    a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-accent);
-      transition: width 0.3s ease;
-    }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+            font-size: 1.5rem;
+        }
 
-    a:hover::after {
-      width: 100%;
-    }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
 
-    a:hover {
-      color: var(--accent-secondary);
-    }
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .wrap {
-        padding: 1rem;
-      }
+        /* Grid layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
 
-      header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-      }
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
 
-      .top-actions {
-        margin-left: 0;
-        justify-content: center;
-      }
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
 
-      .card {
-        padding: 1.5rem;
-      }
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
 
-      .grid {
-        grid-template-columns: 1fr;
-      }
+        /* Benefícios */
+        .benefits {
+            background: var(--bg-secondary);
+        }
 
-      .roadmap {
-        grid-template-columns: 1fr;
-      }
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+        }
 
-      h1 {
-        font-size: 1.8rem;
-      }
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--dark-blue);
+            font-size: 2rem;
+            box-shadow: var(--shadow-glow);
+        }
 
-      .logo {
-        width: 80px;
-        height: 80px;
-      }
+        /* Tokenomics */
+        .tokenomics {
+            background: var(--bg-primary);
+        }
 
-      .logo img {
-        width: 50px;
-        height: 50px;
-      }
-    }
+        .tokenomics-chart {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
 
-    /* Animation Classes */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .supply-info {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
-    .card {
-      animation: fadeInUp 0.6s ease forwards;
-    }
+        .supply-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
 
-    .card:nth-child(even) {
-      animation-delay: 0.1s;
-    }
+        .supply-label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-    .card:nth-child(odd) {
-      animation-delay: 0.2s;
-    }
+        /* Tabela */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+        }
 
-    /* Scroll Animations */
-    @media (prefers-reduced-motion: no-preference) {
-      .card {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
-      }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+        }
 
-      .card.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+        th, td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        th {
+            background: var(--gradient-primary);
+            color: var(--text-white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        td {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        tr:hover td {
+            background: rgba(0, 102, 204, 0.05);
+            color: var(--text-primary);
+        }
+
+        /* Roadmap */
+        .roadmap {
+            background: var(--bg-secondary);
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .roadmap-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .roadmap-content {
+            flex: 1;
+            background: var(--gradient-card);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            margin: 0 2rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .roadmap-phase {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .roadmap-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px var(--bg-secondary), 0 0 0 8px var(--primary-blue);
+        }
+
+        /* Pacotes */
+        .packages {
+            background: var(--gradient-hero);
+            color: var(--text-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .packages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 193, 7, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0, 102, 204, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .package-card.featured {
+            border: 2px solid var(--accent-gold);
+            transform: scale(1.05);
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-white);
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            color: var(--text-white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 6rem 1rem 4rem;
+            }
+
+            .hero-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .roadmap-timeline::before {
+                left: 20px;
+            }
+
+            .roadmap-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 3rem;
+            }
+
+            .roadmap-content {
+                margin: 0;
+            }
+
+            .roadmap-dot {
+                left: 20px;
+            }
+
+            /* Countdown responsivo */
+            .countdown {
+                gap: 0.5rem;
+            }
+
+            .countdown-item {
+                padding: 0.75rem 0.5rem;
+                min-width: 70px;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+
+            /* Ajustes de grid para mobile */
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            /* Ajustes de tipografia */
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-card .price {
+                font-size: 2rem;
+            }
+
+            .hero-card h3 {
+                font-size: 1.25rem;
+            }
+
+            /* Botões responsivos */
+            .btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-actions {
+                gap: 0.5rem;
+            }
+
+            /* Cards de pacotes */
+            .package-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .package-price {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsividade para telas muito pequenas */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 5rem 0.5rem 3rem;
+            }
+
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .countdown {
+                gap: 0.25rem;
+            }
+
+            .countdown-item {
+                padding: 0.5rem 0.25rem;
+                min-width: 60px;
+            }
+
+            .countdown-number {
+                font-size: 1.25rem;
+            }
+
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+
+            .hero-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .btn {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Elementos visíveis */
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo" aria-hidden>
-        <img src="shark-logo.png" alt="SharkMind AI Logo" />
-      </div>
-      <div class="header-content">
-        <h1>SharkMind AI — Empresa & SMAI Token</h1>
-        <div class="subtitle">Pitch Deck — Estrutura Corporativa + Tokenização (BEP-20)</div>
-      </div>
-      <div class="top-actions">
-        <button class="btn" onclick="window.print()">Imprimir / PDF</button>
-        <button class="btn" id="downloadBtn">Baixar HTML</button>
-      </div>
-    </header>
-
-    <!-- Empresa -->
-    <section class="card">
-      <h2>Visão, Missão e Valores</h2>
-      <p><strong>Missão:</strong> Democratizar o acesso a ferramentas de trading institucionais com IA. <br>
-         <strong>Visão:</strong> Construir um ecossistema financeiro completo até 2030, unindo tecnologia, corretora própria e mesa proprietária. <br>
-         <strong>Valores:</strong> Inovação, Performance, Transparência, Confiança, Escalabilidade.</p>
-    </section>
-
-    <section class="card">
-      <h2>Liderança e Estrutura de Gestão</h2>
-      <p><strong>Fundador & CEO:</strong> Marcelo Sperb (Sperb Trader), com 8+ anos de experiência prática em trading e comunidade de 15k seguidores.<br>
-         Estrutura inicial centralizada no fundador, evoluindo para conselho consultivo e relatórios trimestrais.<br>
-         Modelo híbrido: governança corporativa + DAO comunitária com token SMAI.</p>
-    </section>
-
-    <section class="card">
-      <h2>Estrutura e Valuation</h2>
-      <div class="grid">
-        <div>
-          <p><strong>Estrutura Atual:</strong><br>
-          Empresa 100% capitalizada pelo fundador, sem dívidas.<br>
-          Capital inicial investido: R$ 50.000.<br>
-          Produto validado: Alfa Sharks Flow em operação.</p>
+    <!-- Navegação -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNNTA0IDI1NkM1MDQgMTE5IDM5MyA4IDI1NiA4UzggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDh6TTSAMjU2Yy00NC4xIDAtODAtMzUuOS04MC04MHMzNS45LTgwIDgwLTgwIDgwIDM1LjkgODAgODAtMzUuOSA4MC04MCA4MHoiLz48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMzIwIDM4NEgyMGMtNi42IDAtMTItNS40LTEyLTEydi01NmMwLTYuNiA1LjQtMTIgMTItMTJoMzAwYzY2LjIgMCAxMjAtNTMuOCAxMjAtMTIwUzM4Ni4yIDExMiAzMjAgMTEySDEyYy02LjYgMC0xMiA1LjQtMTIgMTJ2NTZjMCA2LjYgNS40IDEyIDEyIDEyaDEyOGMxMy4zIDAgMjQgMTAuNyAyNCAyNHMtMTAuNyAyNC0yNCAyNEgxOTJjLTYuNiAwLTEyIDUuNC0xMiAxMnY1NmMwIDYuNiA1LjQgMTIgMTIgMTJoMTI4YzY2LjIgMCAxMjAtNTMuOCAxMjAtMTIwUzM4Ni4yIDI2NCAzMjAgMjY0eiIvPjwvc3ZnPg==" alt="SharkMind AI">
+                SharkMind AI
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#benefits">Benefícios</a></li>
+                <li><a href="#ecosystem">Ecossistema</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#packages">Pacotes</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="#packages" class="btn btn-primary">
+                    <i class="fas fa-coins"></i> Comprar Token
+                </a>
+            </div>
         </div>
-        <div>
-          <p><strong>Valuation:</strong><br>
-          Pre-Money: R$ 1.000.000.<br>
-          Projeção: R$ 10M+ em 5 anos com expansão e corretora.<br>
-          Equity separado de Utility Token — holders não têm participação acionária, mas participam via utility, staking e governança.</p>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>SharkMind AI: A Revolução do Trading com IA</h1>
+                <p class="subtitle">Desbloqueie o Futuro Financeiro com o SMAI Token e participe do ecossistema de trading mais avançado do mercado</p>
+               
+                </div>
+            </div>
+            
+            <div class="hero-card">
+                <h3>Presale SMAI Token</h3>
+                <div class="price">R$ 0,025</div>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Dias</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">13</div>
+                        <div class="countdown-label">Horas</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">29</div>
+                        <div class="countdown-label">Minutos</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">56</div>
+                        <div class="countdown-label">Segundos</div>
+                    </div>
+                </div>
+                
+                <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.8);">Até o próximo aumento de preço</p>
+                
+                <a href="#packages" class="btn btn-gold" style="width: 100%; margin-bottom: 1rem;">
+                    <i class="fas fa-credit-card"></i> Comprar com Cartão
+                </a>
+                <a href="#packages" class="btn btn-outline" style="width: 100%; background: rgba(255,255,255,0.1); color: var(--text-white); border-color: rgba(255,255,255,0.3);">
+                    <i class="fas fa-wallet"></i> Comprar com Cripto
+                </a>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="card">
-      <h2>Modelo de Negócio (Empresa)</h2>
-      <p>Receita baseada em assinaturas (ticket médio: R$ 499,99).<br>
-         Afiliados recebem 10% na entrada e 6% recorrente — modelo diferenciado no mercado.<br>
-         Projeções: de 10 a 100+ vendas/mês, receita bruta de R$ 5k até R$ 50k+ no curto prazo.</p>
+    <!-- Benefícios -->
+    <section class="section benefits" id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Descubra os Benefícios Exclusivos do SMAI Token</h2>
+                <p class="section-subtitle">Maximize seus ganhos e participe de um ecossistema revolucionário de trading com inteligência artificial</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3 class="card-title">Descontos Exclusivos</h3>
+                    <p class="card-description">Descontos de 25% a 50% em todos os produtos SharkMind AI, incluindo robôs de trading e dashboards analíticos.</p>
+                </div>
+                
+                <div class="card benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="card-title">Acesso Antecipado</h3>
+                    <p class="card-description">Seja o primeiro a testar novos robôs, funcionalidades e lançamentos antes do público geral.</p>
+                </div>
+                
+                <div class="card benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="card-title">Staking Rewards</h3>
+                    <p class="card-description">Ganhe recompensas passivas em SMAI e BUSD através do sistema de staking com APY atrativo.</p>
+                </div>
+                
+                <div class="card benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <h3 class="card-title">Governança DAO</h3>
+                    <p class="card-description">Participe das decisões do ecossistema através de votações on-chain e propostas da comunidade.</p>
+                </div>
+                
+                <div class="card benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">Comunidade VIP</h3>
+                    <p class="card-description">Acesso a grupos exclusivos, mentoria personalizada e networking com traders profissionais.</p>
+                </div>
+                
+                <div class="card benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="card-title">NFTs e Recompensas</h3>
+                    <p class="card-description">Ganhe NFTs exclusivos e participe de programas de indicação com recompensas especiais.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Token -->
-    <section class="card">
-      <h2>SMAI Token — Estrutura e Tokenomics</h2>
-      <p>Token utilitário BEP-20 na BSC, criado para financiar e democratizar o crescimento da SharkMind AI.</p>
-      <table>
-        <thead><tr><th>Categoria</th><th>%</th><th>Quantidade</th><th>Vesting</th></tr></thead>
-        <tbody>
-          <tr><td>Venda Pública</td><td>45%</td><td>45M</td><td>Imediato TGE</td></tr>
-          <tr><td>Equipe & Dev</td><td>15%</td><td>15M</td><td>36m (12m cliff)</td></tr>
-          <tr><td>Liquidez Travada</td><td>15%</td><td>15M</td><td>24m</td></tr>
-          <tr><td>Recompensas/Marketing</td><td>15%</td><td>15M</td><td>Gradual</td></tr>
-          <tr><td>Treasury/Reserva</td><td>10%</td><td>10M</td><td>Governança</td></tr>
-        </tbody>
-      </table>
-      <p><strong>Taxas:</strong> 6% por transação (2% holders em BUSD, 2% liquidez, 1% dev, 1% marketing).<br>
-         Contrato com anti-whale, anti-bot e governança para ajuste de parâmetros.</p>
+    <!-- Ecossistema -->
+    <section class="section" id="ecosystem">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O Ecossistema Completo da SharkMind AI</h2>
+                <p class="section-subtitle">Uma plataforma integrada que combina inteligência artificial, trading avançado e tecnologia blockchain</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="card-title">Robôs de Trading Multi-Mercado</h3>
+                    <p class="card-description">Algoritmos avançados de IA para Índice, Multimercado Internacional, Forex, Criptomoedas e Commodities. Performance comprovada com backtests rigorosos e operação em tempo real.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Dashboards Analíticos</h3>
+                    <p class="card-description">Painéis intuitivos com análise técnica avançada, sinais em tempo real e métricas de performance detalhadas.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">Corretora SharkMind (2027-2028)</h3>
+                    <p class="card-description">Corretora própria com spreads competitivos, execução ultra-rápida e integração nativa com nossos robôs de trading. Visão final: Tornar-se um banco e corretora especializada para traders, com todas as nossas tecnologias disponíveis.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <h3 class="card-title">Mesa Proprietária</h3>
+                    <p class="card-description">Operações proprietárias com capital próprio, utilizando estratégias institucionais e algoritmos de IA para maximizar retornos e gerenciar riscos.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="card-title">Ferramentas de IA e Treinamentos</h3>
+                    <p class="card-description">
+                        Proporcionamos diversas ferramentas com inteligência artificial para auxiliar as pessoas em sua jornada de investimentos, 
+                        desde análises preditivas até otimização de portfólio. Além disso, oferecemos treinamentos completos para capacitar nossos usuários.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="card">
-      <h2>Utility do Token</h2>
-      <ul>
-        <li>Descontos 25–50% em produtos SharkMind AI.</li>
-        <li>Acesso antecipado a novos robôs e dashboards.</li>
-        <li>Staking com recompensas em SMAI + BUSD.</li>
-        <li>Governança comunitária: votações de roadmap e listagens.</li>
-        <li>Programas de indicação e NFTs para contribuidores ativos.</li>
-      </ul>
+    <!-- Tokenomics -->
+    <section class="section tokenomics" id="tokenomics">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SMAI Tokenomics: Transparência e Sustentabilidade</h2>
+                <p class="section-subtitle">Distribuição equilibrada e mecanismos inovadores para garantir crescimento sustentável</p>
+            </div>
+            
+            <div class="tokenomics-chart">
+                <div class="supply-info">
+                    <div class="supply-number">100,000,000</div>
+                    <div class="supply-label">Total Supply SMAI</div>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Porcentagem</th>
+                                <th>Quantidade</th>
+                                <th>Vesting</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Venda Pública</strong></td>
+                                <td>45%</td>
+                                <td>45M SMAI</td>
+                                <td>Imediato TGE</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equipe & Desenvolvimento</strong></td>
+                                <td>15%</td>
+                                <td>15M SMAI</td>
+                                <td>36m (12m cliff)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Liquidez Travada</strong></td>
+                                <td>15%</td>
+                                <td>15M SMAI</td>
+                                <td>24 meses</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Recompensas/Marketing</strong></td>
+                                <td>15%</td>
+                                <td>15M SMAI</td>
+                                <td>Gradual</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Treasury/Reserva</strong></td>
+                                <td>10%</td>
+                                <td>10M SMAI</td>
+                                <td>Governança</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grid grid-2" style="margin-top: 2rem;">
+                    <div class="card">
+                        <h3 class="card-title">Taxas de Transação</h3>
+                        <p class="card-description"><strong>6% por transação:</strong><br>
+                        • 2% distribuído para holders em BUSD<br>
+                        • 2% adicionado à liquidez<br>
+                        • 1% para desenvolvimento<br>
+                        • 1% para marketing</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Mecanismos de Proteção</h3>
+                        <p class="card-description"><strong>Segurança Avançada:</strong><br>
+                        • Anti-whale protection<br>
+                        • Anti-bot mechanisms<br>
+                        • Governança para ajustes<br>
+                        • Auditoria de contrato</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Roadmaps -->
-    <section class="card">
-      <h2>Roadmap Corporativo (Empresa)</h2>
-      <div class="roadmap">
-        <div class="phase"><strong>2025–2026</strong><p>Consolidação de produtos (robôs para Forex, Cripto, Commodities + dashboards analíticos).</p></div>
-        <div class="phase"><strong>2027–2028</strong><p>Lançamento da corretora SharkMind Brokerage + mesa proprietária.</p></div>
-        <div class="phase"><strong>2029–2030</strong><p>Ecossistema completo: corretora, tesouraria, fundos, social trading.</p></div>
-        <div class="phase"><strong>2030+</strong><p>Expansão global (LATAM, Europa, Ásia).</p></div>
-      </div>
+    <!-- Roadmap -->
+    <section class="section roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nosso Caminho para o Futuro</h2>
+                <p class="section-subtitle">Um roadmap ambicioso que combina inovação tecnológica com crescimento sustentável</p>
+            </div>
+            
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase">Fase 1 - Desenvolvimento de Robôs</div>
+                        <div class="roadmap-description">
+                            Desenvolvimento de robôs para o mercado nacional. Atualmente temos 1 robô operacional, com meta de expandir para 5 a 10 robôs ao todo, cobrindo diferentes estratégias e mercados.
+                        </div>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase">Fase 2 - Dashboards e Tecnologias</div>
+                        <div class="roadmap-description">
+                            Desenvolvimento de dashboards e outros programas para análise, declaração de impostos e todo tipo de tecnologia para agregar valor a quem opera no mercado. Plataforma operacional completa.
+                        </div>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase">Fase 3 - Treinamentos e Mesa Proprietária</div>
+                        <div class="roadmap-description">
+                            Abertura de espaço para treinamentos educacionais, capacitação e inclusão de pessoas. Mesa proprietária para testes e fornecimento de capital para quem aprender conosco e operar nossos robôs.
+                        </div>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase">Fase 4 - Corretora SharkMind</div>
+                        <div class="roadmap-description">
+                            Lançamento da corretora própria para completar ainda mais o ecossistema, oferecendo execução direta e integração total com todas as nossas tecnologias de IA.
+                        </div>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-content">
+                        <div class="roadmap-phase">Fase 5 - Banco SharkMind</div>
+                        <div class="roadmap-description">
+                            Projeto final: Banco especializado para traders, oferecendo serviços bancários completos integrados com todas as nossas tecnologias de IA, corretora e mesa proprietária.
+                        </div>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="card">
-      <h2>Roadmap do Token</h2>
-      <div class="roadmap">
-        <div class="phase"><strong>0–6m</strong><p>Lançamento do token (PancakeSwap), pools travados, staking MVP, 1º robô cripto beta.</p></div>
-        <div class="phase"><strong>6–18m</strong><p>Listagens CEX regionais, robôs Forex & Commodities, governança DAO inicial.</p></div>
-        <div class="phase"><strong>18–36m</strong><p>Expansão de produtos, integração institucional, corretora SharkMind.</p></div>
-      </div>
+    <!-- Pacotes -->
+    <section class="section packages" id="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Escolha seu Pacote SMAI Token</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Participe da revolução do trading com IA e aproveite os benefícios exclusivos</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="package-card">
+                    <h3 class="package-title">Pacote Inicial</h3>
+                    <div class="package-price">1,000 SMAI</div>
+                    <ul class="package-features">
+                        <li>Desconto de 25% em produtos</li>
+                        <li>Acesso a grupo exclusivo</li>
+                        <li>Suporte prioritário</li>
+                        <li>Staking básico</li>
+                    </ul>
+                    <button class="btn btn-gold">Selecionar Pacote</button>
+                </div>
+                
+                <div class="package-card featured">
+                    <h3 class="package-title">Pacote Intermediário</h3>
+                    <div class="package-price">5,000 SMAI</div>
+                    <ul class="package-features">
+                        <li>Desconto de 35% em produtos</li>
+                        <li>Acesso antecipado a lançamentos</li>
+                        <li>Participação em governança</li>
+                        <li>Suporte 24/7</li>
+                        <li>NFT exclusivo</li>
+                    </ul>
+                    <button class="btn btn-gold">Selecionar Pacote</button>
+                </div>
+                
+                <div class="package-card">
+                    <h3 class="package-title">Pacote Premium</h3>
+                    <div class="package-price">10,000 SMAI</div>
+                    <ul class="package-features">
+                        <li>Desconto de 50% em produtos</li>
+                        <li>Acesso a todos os robôs</li>
+                        <li>Voto em decisões da DAO</li>
+                        <li>Mentoria personalizada</li>
+                        <li>Recompensas de staking premium</li>
+                        <li>NFT coleção limitada</li>
+                    </ul>
+                    <button class="btn btn-gold">Selecionar Pacote</button>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Conclusão -->
-    <section class="card">
-      <h2>Governança & Transparência</h2>
-      <p>Gestão híbrida: empresa estruturada (relatórios trimestrais, board consultivo) + DAO via token SMAI (votações on-chain, propostas de comunidade).<br>
-         Auditorias de contrato, bug bounties e dashboard público on-chain garantem confiança e transparência.</p>
+    <!-- Visão de Futuro -->
+    <section class="section" style="background: var(--gradient-hero); color: var(--text-white); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 30%, rgba(255, 193, 7, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(0, 102, 204, 0.2) 0%, transparent 50%); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">Visão de Futuro: Banco e Corretora SharkMind</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Nosso projeto final é revolucionar o mercado financeiro com um banco e corretora especializada para traders</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="card-icon" style="background: var(--gradient-gold);">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="card-title" style="color: var(--accent-gold);">Banco SharkMind</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.9);">
+                        Instituição financeira completa com contas digitais, cartões de crédito e débito, empréstimos especializados para traders, 
+                        e produtos financeiros exclusivos integrados com nossa tecnologia de IA.
+                    </p>
+                </div>
+                
+                <div class="card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="card-icon" style="background: var(--gradient-gold);">
+                        <i class="fas fa-chart-network"></i>
+                    </div>
+                    <h3 class="card-title" style="color: var(--accent-gold);">Corretora Especializada</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.9);">
+                        Corretora de valores mobiliários focada em traders profissionais, com execução institucional, 
+                        spreads ultra-competitivos e integração total com nossos robôs de IA e dashboards analíticos.
+                    </p>
+                </div>
+                
+                <div class="card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="card-icon" style="background: var(--gradient-gold);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="card-title" style="color: var(--accent-gold);">Tecnologia Integrada</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.9);">
+                        Todas as nossas tecnologias de IA, robôs de trading, dashboards e análises estarão nativamente 
+                        integradas na plataforma bancária e de corretagem, oferecendo uma experiência única no mercado.
+                    </p>
+                </div>
+                
+                <div class="card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div class="card-icon" style="background: var(--gradient-gold);">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="card-title" style="color: var(--accent-gold);">Expansão Global</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.9);">
+                        Licenças bancárias e de corretagem em múltiplas jurisdições, permitindo atender traders 
+                        profissionais em todo o mundo com os mais altos padrões de segurança e regulamentação.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="card">
-      <h2>Contato</h2>
-      <p><strong>Marcelo Sperb</strong><br>Founder & CEO — SharkMind AI<br>Email: <a href="mailto:sharkmindai@gmail.com">sharkmindai@gmail.com</a></p>
+    <!-- Sobre a Empresa -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossa Missão e Oportunidade</h2>
+                <p class="section-subtitle">Democratizando o acesso aos investimentos no Brasil</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">Nossa Missão</h3>
+                    <p class="card-description">
+                        Fazer com que pessoas que ainda não investem comecem a investir e que aqueles que não têm resultados, passem a ter. 
+                        Ajudamos pessoas a ganharem dinheiro investindo seu capital de forma inteligente e segura.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="card-title">Potencial de Mercado</h3>
+                    <p class="card-description">
+                        O mercado financeiro brasileiro possui um vasto potencial de expansão, com menos de 10% de toda a população investindo atualmente.
+                        A SharkMind AI está posicionada para capitalizar essa lacuna com soluções acessíveis e eficazes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 4rem;">
+                <h2 class="section-title">Equipe e Estrutura</h2>
+                <p class="section-subtitle">Liderança experiente e parceiros estratégicos</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="card-title">Marcelo Sperb - CEO & Fundador</h3>
+                    <p class="card-description">
+                        Ex-publicitário, programador de site e operador no mercado desde 2019, com uma comunidade de mais de 5k seguidores. 
+                        Responsável pelo desenvolvimento e marketing da empresa. Detentor de 98% da empresa.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="card-title">Mariel Machado - Comercial & Parcerias</h3>
+                    <p class="card-description">
+                        Responsável por clientes, afiliados e outros parceiros. 
+                        Parceira estratégica com 1% de participação na empresa.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="card-title">Rafael Sanatayana - Jurídico</h3>
+                    <p class="card-description">
+                        Advogado responsável pela parte burocrática e administrativa da empresa. 
+                        Parceiro estratégico com 1% de participação na empresa.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-      <div>Documento interativo — Pitch Corporativo + Tokenização SMAI. Não constitui oferta de investimento. Consulte assessoria jurídica e financeira antes de investir.</div>
+    <!-- Contato -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Fale Conosco</h2>
+                <p class="section-subtitle">Entre em contato para mais informações sobre o SMAI Token e o ecossistema SharkMind AI</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">Contato Empresarial</h3>
+                    <p class="card-description">
+                        <strong>SharkMind AI</strong><br>
+                        Email: <a href="mailto:sharkmindai@gmail.com" style="color: var(--primary-blue);">sharkmindai@gmail.com</a><br>
+                        WhatsApp: <a href="https://wa.me/5551981624122" style="color: var(--primary-blue);">+55 51 98162-4122</a><br>
+                        Contato direto com a empresa
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title">Governança & Transparência</h3>
+                    <p class="card-description">
+                        Gestão híbrida: empresa estruturada com relatórios trimestrais + DAO via token SMAI com votações on-chain. Auditorias de contrato, bug bounties e dashboard público garantem confiança total.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 SharkMind AI. Todos os direitos reservados.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                Documento interativo — Pitch Corporativo + Tokenização SMAI. Não constitui oferta de investimento. 
+                Consulte assessoria jurídica e financeira antes de investir.
+            </p>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    // Download functionality
-    document.getElementById('downloadBtn').addEventListener('click', function(){
-      const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; 
-      a.download = 'SharkMindAI_SMAI_Pitch_Melhorado.html'; 
-      document.body.appendChild(a); 
-      a.click(); 
-      URL.revokeObjectURL(url); 
-      a.remove();
-    });
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-    // Scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const targetDate = new Date(now + (24 * 60 * 60 * 1000)).getTime(); // 24 hours from now
+            const distance = targetDate - now;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
-      });
-    }, observerOptions);
 
-    // Observe all cards for animation
-    document.querySelectorAll('.card').forEach(card => {
-      observer.observe(card);
-    });
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
 
-    // Add smooth scrolling
-    document.documentElement.style.scrollBehavior = 'smooth';
-  </script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('hidden');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .section').forEach(element => {
+            element.classList.add('hidden');
+            observer.observe(element);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download functionality
+        function downloadHTML() {
+            const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'SharkMindAI_SMAI_Site_Melhorado.html';
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+            a.remove();
+        }
+
+        // Add download functionality to buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtns = document.querySelectorAll('.btn-outline');
+            downloadBtns.forEach(btn => {
+                if (btn.textContent.includes('PDF')) {
+                    btn.addEventListener('click', function(e) {
+                        if (!e.target.closest('[onclick]')) {
+                            downloadHTML();
+                        }
+                    });
+                }
+            });
+        });
+
+        // Package selection
+        document.querySelectorAll('.package-card .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const packageName = this.closest('.package-card').querySelector('.package-title').textContent;
+                alert(`Você selecionou o ${packageName}! Em breve você será redirecionado para a página de pagamento.`);
+            });
+        });
+    </script>
 </body>
 </html>
-
