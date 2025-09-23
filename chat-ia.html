@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharkMind AI - Chat IA para o Mercado Financeiro</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Tema Escuro Profissional */
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #1a1f2e;
+            --bg-tertiary: #252b3d;
+            --bg-chat: #141822;
+            --bg-sidebar: #0f1419;
+            
+            /* Cores de acento */
+            --accent-primary: #00d4ff;
+            --accent-secondary: #00a8cc;
+            --accent-gold: #ffa726;
+            --accent-green: #4caf50;
+            --accent-red: #f44336;
+            
+            /* Texto */
+            --text-primary: #ffffff;
+            --text-secondary: #b8bcc8;
+            --text-muted: #6b7280;
+            --text-accent: #00d4ff;
+            
+            /* Bordas */
+            --border-color: #2d3748;
+            --border-light: #4a5568;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+            
+            /* Gradientes */
+            --gradient-primary: linear-gradient(135deg, #00d4ff, #00a8cc);
+            --gradient-gold: linear-gradient(135deg, #ffa726, #ff9800);
+            --gradient-success: linear-gradient(135deg, #4caf50, #388e3c);
+            --gradient-danger: linear-gradient(135deg, #f44336, #d32f2f);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        /* Layout Principal */
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .user-info {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .user-credits {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .credits-display {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .credits-count {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .upgrade-btn {
+            background: var(--gradient-gold);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .upgrade-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mode-selector {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mode-selector h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mode-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mode-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .mode-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent-primary);
+        }
+
+        .mode-btn.active {
+            background: var(--gradient-primary);
+            color: #000;
+            border-color: var(--accent-primary);
+        }
+
+        .chat-history {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-history h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .history-item {
+            background: var(--bg-tertiary);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .history-item:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-light);
+        }
+
+        .history-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .history-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Área Principal do Chat */
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-chat);
+        }
+
+        .chat-header {
+            background: var(--bg-secondary);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .day-trade-indicator {
+            background: var(--gradient-success);
+            color: #000;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .day-trade-indicator.active {
+            display: block;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 1rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: var(--gradient-primary);
+            color: #000;
+            font-weight: 500;
+        }
+
+        .message.assistant {
+            align-self: flex-start;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .message-content {
+            line-height: 1.6;
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .message.assistant .message-time {
+            color: var(--text-muted);
+        }
+
+        .message.user .message-time {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Indicador de digitação */
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 12px;
+            max-width: 80px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.3;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        /* Input de Chat */
+        .chat-input-container {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .chat-input-wrapper {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+            transition: all 0.2s ease;
+        }
+
+        .chat-input-wrapper:focus-within {
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            resize: none;
+            outline: none;
+            min-height: 24px;
+            max-height: 120px;
+            font-family: inherit;
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .send-button {
+            background: var(--gradient-primary);
+            border: none;
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .send-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Sugestões rápidas */
+        .quick-suggestions {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .suggestion-chip {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .suggestion-chip:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .welcome-icon {
+            font-size: 3rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        .welcome-title {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .welcome-subtitle {
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .feature-icon {
+            background: var(--gradient-primary);
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                z-index: 1000;
+                transition: left 0.3s ease;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .chat-main {
+                width: 100%;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+                color: var(--text-primary);
+                padding: 0.75rem;
+                border-radius: 8px;
+                cursor: pointer;
+                margin-right: 1rem;
+            }
+
+            .message {
+                max-width: 95%;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Scrollbar customizada */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-light);
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            animation: fadeInUp 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="shark-logo.png" alt="SharkMind AI">
+                    SharkMind AI
+                </div>
+            </div>
+
+            <!-- Informações do usuário -->
+            <div class="user-info">
+                <div class="user-name">Usuário Visitante</div>
+                <div class="user-credits">
+                    <span class="credits-display">
+                        Créditos: <span class="credits-count" id="userCredits">5</span>
+                    </span>
+                    <button class="upgrade-btn" onclick="upgradeAccount()">
+                        <i class="fas fa-crown"></i> Premium
+                    </button>
+                </div>
+            </div>
+
+            <!-- Seletor de modo -->
+            <div class="mode-selector">
+                <h3>Modo de Análise</h3>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="consulta" onclick="setMode('consulta')">
+                        <i class="fas fa-search"></i>
+                        Consulta Geral
+                    </button>
+                    <button class="mode-btn" data-mode="daytrade" onclick="setMode('daytrade')">
+                        <i class="fas fa-chart-candlestick"></i>
+                        Day Trade
+                    </button>
+                    <button class="mode-btn" data-mode="portfolio" onclick="setMode('portfolio')">
+                        <i class="fas fa-briefcase"></i>
+                        Análise de Portfólio
+                    </button>
+                    <button class="mode-btn" data-mode="robot" onclick="setMode('robot')">
+                        <i class="fas fa-robot"></i>
+                        Programação de Robôs
+                    </button>
+                </div>
+            </div>
+
+            <!-- Histórico de conversas -->
+            <div class="chat-history">
+                <h3>Conversas Recentes</h3>
+                <div class="history-item">
+                    <div class="history-title">Análise WINFUT para amanhã</div>
+                    <div class="history-time">Há 2 horas</div>
+                </div>
+                <div class="history-item">
+                    <div class="history-title">Estratégia para INDFUT</div>
+                    <div class="history-time">Ontem</div>
+                </div>
+                <div class="history-item">
+                    <div class="history-title">Robô de arbitragem</div>
+                    <div class="history-time">Há 2 dias</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat Principal -->
+        <main class="chat-main">
+            <!-- Cabeçalho do Chat -->
+            <header class="chat-header">
+                <div class="chat-header-left">
+                    <button class="mobile-menu-btn" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="chat-title">Chat IA - Mercado Financeiro</h1>
+                </div>
+                <div class="day-trade-indicator" id="dayTradeIndicator">
+                    <i class="fas fa-chart-line"></i>
+                    Modo Day Trade Ativo
+                </div>
+            </header>
+
+            <!-- Mensagens do Chat -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2 class="welcome-title">Bem-vindo ao SharkMind AI</h2>
+                    <p class="welcome-subtitle">
+                        Seu assistente inteligente para análises de mercado, estratégias de trading e programação de robôs financeiros.
+                        Escolha um modo de análise e comece a conversar!
+                    </p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="feature-title">Análises em Tempo Real</h3>
+                            <p>Análises técnicas e fundamentalistas atualizadas dos principais ativos do mercado brasileiro.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 class="feature-title">Programação de Robôs</h3>
+                            <p>Desenvolvimento de estratégias automatizadas em NTFL para a plataforma Nelogica.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="feature-title">IA Avançada</h3>
+                            <p>Powered by GPT-4, Claude e modelos especializados em mercado financeiro.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Dados Seguros</h3>
+                            <p>Suas conversas e estratégias são protegidas e nunca compartilhadas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicador de digitação -->
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input de mensagem -->
+            <div class="chat-input-container">
+                <div class="quick-suggestions" id="quickSuggestions">
+                    <div class="suggestion-chip" onclick="sendSuggestion('Como está o WINFUT hoje?')">
+                        Como está o WINFUT hoje?
+                    </div>
+                    <div class="suggestion-chip" onclick="sendSuggestion('Analise o INDFUT para day trade')">
+                        Analise o INDFUT para day trade
+                    </div>
+                    <div class="suggestion-chip" onclick="sendSuggestion('Crie um robô de scalping')">
+                        Crie um robô de scalping
+                    </div>
+                </div>
+                
+                <div class="chat-input-wrapper">
+                    <textarea 
+                        class="chat-input" 
+                        id="messageInput" 
+                        placeholder="Digite sua pergunta sobre o mercado financeiro..."
+                        rows="1"
+                        onkeypress="handleKeyPress(event)"
+                        oninput="autoResize(this)"
+                    ></textarea>
+                    <button class="send-button" id="sendButton" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Estado da aplicação
+        let currentMode = 'consulta';
+        let userCredits = 5;
+        let isTyping = false;
+        let chatHistory = [];
+        let authToken = localStorage.getItem('authToken');
+        let currentConversationId = null;
+        let apiBaseUrl = window.location.origin + '/api';
+
+        // Configurações dos modos
+        const modeConfigs = {
+            consulta: {
+                title: 'Consulta Geral',
+                placeholder: 'Faça perguntas sobre análises técnicas, fundamentalistas e estratégias...',
+                suggestions: [
+                    'Como está o IBOV hoje?',
+                    'Analise o dólar para a próxima semana',
+                    'Quais ações estão em alta?'
+                ]
+            },
+            daytrade: {
+                title: 'Day Trade',
+                placeholder: 'Análises focadas em INDFUT, WINFUT, DOLFUT, WDOFUT, BITFUT...',
+                suggestions: [
+                    'Analise o WINFUT para day trade',
+                    'Pontos de entrada no INDFUT',
+                    'Setup para DOLFUT hoje'
+                ]
+            },
+            portfolio: {
+                title: 'Análise de Portfólio',
+                placeholder: 'Otimização e análise de carteiras de investimento...',
+                suggestions: [
+                    'Analise meu portfólio de ações',
+                    'Diversificação de investimentos',
+                    'Rebalanceamento de carteira'
+                ]
+            },
+            robot: {
+                title: 'Programação de Robôs',
+                placeholder: 'Desenvolvimento de estratégias em NTFL para Nelogica...',
+                suggestions: [
+                    'Crie um robô de scalping',
+                    'Estratégia de breakout automatizada',
+                    'Robô para swing trade'
+                ]
+            }
+        };
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCreditsDisplay();
+            setMode('consulta');
+        });
+
+        // Gerenciamento de modo
+        function setMode(mode) {
+            currentMode = mode;
+            
+            // Atualizar botões
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+            
+            // Atualizar indicador de day trade
+            const dayTradeIndicator = document.getElementById('dayTradeIndicator');
+            if (mode === 'daytrade') {
+                dayTradeIndicator.classList.add('active');
+            } else {
+                dayTradeIndicator.classList.remove('active');
+            }
+            
+            // Atualizar configurações
+            const config = modeConfigs[mode];
+            document.getElementById('messageInput').placeholder = config.placeholder;
+            updateQuickSuggestions(config.suggestions);
+        }
+
+        // Atualizar sugestões rápidas
+        function updateQuickSuggestions(suggestions) {
+            const container = document.getElementById('quickSuggestions');
+            container.innerHTML = '';
+            
+            suggestions.forEach(suggestion => {
+                const chip = document.createElement('div');
+                chip.className = 'suggestion-chip';
+                chip.textContent = suggestion;
+                chip.onclick = () => sendSuggestion(suggestion);
+                container.appendChild(chip);
+            });
+        }
+
+        // Enviar sugestão
+        function sendSuggestion(text) {
+            document.getElementById('messageInput').value = text;
+            sendMessage();
+        }
+
+        // Enviar mensagem
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message || isTyping) return;
+            
+            // Verificar créditos
+            if (userCredits <= 0) {
+                alert('Você não tem créditos suficientes. Faça upgrade para continuar!');
+                return;
+            }
+            
+            // Adicionar mensagem do usuário
+            addMessage('user', message);
+            
+            // Limpar input
+            input.value = '';
+            input.style.height = 'auto';
+            
+            // Esconder tela de boas-vindas
+            hideWelcomeScreen();
+            
+            // Consumir crédito
+            userCredits--;
+            updateCreditsDisplay();
+            
+            // Simular resposta da IA
+            simulateAIResponse(message);
+        }
+
+        // Adicionar mensagem ao chat
+        function addMessage(sender, content) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('pt-BR', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            messageDiv.innerHTML = `
+                <div class="message-content">${content}</div>
+                <div class="message-time">${timeString}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Salvar no histórico
+            chatHistory.push({ sender, content, time: now });
+        }
+
+        // Enviar mensagem para API real
+        async function simulateAIResponse(userMessage) {
+            showTypingIndicator();
+            
+            try {
+                const headers = {
+                    'Content-Type': 'application/json'
+                };
+                
+                if (authToken) {
+                    headers['Authorization'] = `Bearer ${authToken}`;
+                }
+                
+                const response = await fetch(`${apiBaseUrl}/chat/message`, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify({
+                        message: userMessage,
+                        mode: currentMode,
+                        conversationId: currentConversationId
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Atualizar créditos se retornado
+                    if (data.credits !== null && data.credits !== undefined) {
+                        userCredits = data.credits;
+                        updateCreditsDisplay();
+                    }
+                    
+                    // Atualizar ID da conversa
+                    if (data.conversationId) {
+                        currentConversationId = data.conversationId;
+                    }
+                    
+                    hideTypingIndicator();
+                    addMessage('assistant', data.response);
+                    
+                } else {
+                    hideTypingIndicator();
+                    
+                    if (response.status === 402) {
+                        addMessage('assistant', '⚠️ Você não tem créditos suficientes. Faça upgrade para continuar usando o chat!');
+                        showUpgradePrompt();
+                    } else {
+                        addMessage('assistant', `Erro: ${data.error || 'Falha na comunicação com o servidor'}`);
+                    }
+                }
+                
+            } catch (error) {
+                hideTypingIndicator();
+                console.error('Erro na API:', error);
+                
+                // Fallback para resposta offline
+                let response = generateModeSpecificResponse(userMessage, currentMode);
+                addMessage('assistant', `🔌 **Modo Offline:** ${response}`);
+            }
+        }
+
+        // Gerar resposta específica do modo
+        function generateModeSpecificResponse(message, mode) {
+            const responses = {
+                consulta: [
+                    "Com base na análise técnica atual, posso identificar alguns pontos importantes para você considerar...",
+                    "Analisando os indicadores fundamentalistas e o cenário macroeconômico atual...",
+                    "Os dados mostram uma tendência interessante que vale a pena observar..."
+                ],
+                daytrade: [
+                    "Para day trade nos futuros, identifiquei os seguintes níveis técnicos:<br><br>📈 <strong>WINFUT:</strong> Suporte em 127.500, Resistência em 128.200<br>📊 <strong>INDFUT:</strong> Pivot em 115.800, Volume crescente<br>💰 <strong>DOLFUT:</strong> Breakout acima de 5.15, Target em 5.18",
+                    "Baseado nos padrões de candlestick e volume, sugiro aguardar o rompimento dos 127.800 no WINFUT para entrada long com stop em 127.600 e alvo em 128.100.",
+                    "O setup atual mostra divergência no MACD do INDFUT. Recomendo aguardar confirmação de reversão antes de posicionar."
+                ],
+                portfolio: [
+                    "Analisando a composição do seu portfólio, recomendo uma redistribuição focada em diversificação setorial...",
+                    "Para otimização de risco-retorno, sugiro rebalanceamento com base nos seguintes critérios...",
+                    "Considerando o cenário atual, uma alocação mais defensiva seria prudente..."
+                ],
+                robot: [
+                    "Aqui está um exemplo de estratégia em NTFL para scalping no mini índice:<br><br><pre>input: Period(9);<br>input: FastMA(5);<br>input: SlowMA(21);<br><br>if CrossOver(Average(Close, FastMA), Average(Close, SlowMA)) then<br>   Buy at Market;<br><br>if CrossUnder(Average(Close, FastMA), Average(Close, SlowMA)) then<br>   SellShort at Market;</pre>",
+                    "Para um robô de breakout, podemos usar a seguinte lógica de identificação de rompimento de canal...",
+                    "Estratégia de mean reversion com bandas de Bollinger adaptadas para o mercado brasileiro..."
+                ]
+            };
+            
+            const modeResponses = responses[mode] || responses.consulta;
+            return modeResponses[Math.floor(Math.random() * modeResponses.length)];
+        }
+
+        // Mostrar indicador de digitação
+        function showTypingIndicator() {
+            isTyping = true;
+            document.getElementById('typingIndicator').style.display = 'block';
+            document.getElementById('sendButton').disabled = true;
+            
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Esconder indicador de digitação
+        function hideTypingIndicator() {
+            isTyping = false;
+            document.getElementById('typingIndicator').style.display = 'none';
+            document.getElementById('sendButton').disabled = false;
+        }
+
+        // Esconder tela de boas-vindas
+        function hideWelcomeScreen() {
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            if (welcomeScreen) {
+                welcomeScreen.style.display = 'none';
+            }
+        }
+
+        // Atualizar display de créditos
+        function updateCreditsDisplay() {
+            document.getElementById('userCredits').textContent = userCredits;
+        }
+
+        // Upgrade de conta
+        function upgradeAccount() {
+            showLoginModal();
+        }
+        
+        // Mostrar prompt de upgrade
+        function showUpgradePrompt() {
+            const upgradeHtml = `
+                <div class="upgrade-prompt" style="
+                    position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+                    background: rgba(0,0,0,0.8); z-index: 10000; 
+                    display: flex; align-items: center; justify-content: center;
+                ">
+                    <div style="
+                        background: var(--bg-secondary); padding: 2rem; 
+                        border-radius: 12px; max-width: 400px; text-align: center;
+                        border: 1px solid var(--border-color);
+                    ">
+                        <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">
+                            ⚡ Upgrade Necessário
+                        </h3>
+                        <p style="margin-bottom: 2rem;">
+                            Você esgotou seus créditos gratuitos. Faça upgrade para continuar usando o Chat IA!
+                        </p>
+                        <div style="display: flex; gap: 1rem; justify-content: center;">
+                            <button onclick="closeUpgradePrompt()" style="
+                                background: var(--bg-tertiary); color: var(--text-primary); 
+                                border: 1px solid var(--border-color); padding: 0.75rem 1.5rem; 
+                                border-radius: 8px; cursor: pointer;
+                            ">Cancelar</button>
+                            <button onclick="showLoginModal(); closeUpgradePrompt();" style="
+                                background: var(--gradient-gold); color: #000; 
+                                border: none; padding: 0.75rem 1.5rem; 
+                                border-radius: 8px; cursor: pointer; font-weight: 600;
+                            ">Fazer Upgrade</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', upgradeHtml);
+        }
+        
+        function closeUpgradePrompt() {
+            const prompt = document.querySelector('.upgrade-prompt');
+            if (prompt) {
+                prompt.remove();
+            }
+        }
+        
+        // Sistema de login/registro
+        function showLoginModal() {
+            const modalHtml = `
+                <div class="auth-modal" style="
+                    position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+                    background: rgba(0,0,0,0.8); z-index: 10000; 
+                    display: flex; align-items: center; justify-content: center;
+                ">
+                    <div style="
+                        background: var(--bg-secondary); padding: 2rem; 
+                        border-radius: 12px; max-width: 400px; width: 90%;
+                        border: 1px solid var(--border-color);
+                    ">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h3 style="color: var(--text-primary);">Entrar / Cadastrar</h3>
+                            <button onclick="closeAuthModal()" style="
+                                background: none; border: none; color: var(--text-muted); 
+                                font-size: 1.5rem; cursor: pointer;
+                            ">&times;</button>
+                        </div>
+                        
+                        <div class="auth-tabs" style="display: flex; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+                            <button class="auth-tab active" onclick="showAuthTab('login')" data-tab="login" style="
+                                background: none; border: none; color: var(--text-primary); 
+                                padding: 0.75rem 1rem; cursor: pointer; border-bottom: 2px solid var(--accent-primary);
+                            ">Entrar</button>
+                            <button class="auth-tab" onclick="showAuthTab('register')" data-tab="register" style="
+                                background: none; border: none; color: var(--text-muted); 
+                                padding: 0.75rem 1rem; cursor: pointer; border-bottom: 2px solid transparent;
+                            ">Cadastrar</button>
+                        </div>
+                        
+                        <form id="loginForm" class="auth-form">
+                            <div style="margin-bottom: 1rem;">
+                                <input type="email" id="loginEmail" placeholder="Email" required style="
+                                    width: 100%; padding: 0.75rem; background: var(--bg-tertiary); 
+                                    border: 1px solid var(--border-color); border-radius: 8px; 
+                                    color: var(--text-primary); font-size: 1rem;
+                                ">
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <input type="password" id="loginPassword" placeholder="Senha" required style="
+                                    width: 100%; padding: 0.75rem; background: var(--bg-tertiary); 
+                                    border: 1px solid var(--border-color); border-radius: 8px; 
+                                    color: var(--text-primary); font-size: 1rem;
+                                ">
+                            </div>
+                            <button type="submit" style="
+                                width: 100%; padding: 0.75rem; background: var(--gradient-primary); 
+                                color: #000; border: none; border-radius: 8px; 
+                                font-weight: 600; cursor: pointer;
+                            ">Entrar</button>
+                        </form>
+                        
+                        <form id="registerForm" class="auth-form" style="display: none;">
+                            <div style="margin-bottom: 1rem;">
+                                <input type="text" id="registerName" placeholder="Nome completo" required style="
+                                    width: 100%; padding: 0.75rem; background: var(--bg-tertiary); 
+                                    border: 1px solid var(--border-color); border-radius: 8px; 
+                                    color: var(--text-primary); font-size: 1rem;
+                                ">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <input type="email" id="registerEmail" placeholder="Email" required style="
+                                    width: 100%; padding: 0.75rem; background: var(--bg-tertiary); 
+                                    border: 1px solid var(--border-color); border-radius: 8px; 
+                                    color: var(--text-primary); font-size: 1rem;
+                                ">
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <input type="password" id="registerPassword" placeholder="Senha (mín. 6 caracteres)" required minlength="6" style="
+                                    width: 100%; padding: 0.75rem; background: var(--bg-tertiary); 
+                                    border: 1px solid var(--border-color); border-radius: 8px; 
+                                    color: var(--text-primary); font-size: 1rem;
+                                ">
+                            </div>
+                            <button type="submit" style="
+                                width: 100%; padding: 0.75rem; background: var(--gradient-gold); 
+                                color: #000; border: none; border-radius: 8px; 
+                                font-weight: 600; cursor: pointer;
+                            ">Cadastrar (5 créditos grátis!)</button>
+                        </form>
+                        
+                        <div id="authError" style="
+                            margin-top: 1rem; padding: 0.75rem; background: rgba(244, 67, 54, 0.1); 
+                            border: 1px solid #f44336; border-radius: 8px; color: #f44336; 
+                            font-size: 0.9rem; display: none;
+                        "></div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+            
+            // Event listeners
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+        }
+        
+        function closeAuthModal() {
+            const modal = document.querySelector('.auth-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        function showAuthTab(tab) {
+            const tabs = document.querySelectorAll('.auth-tab');
+            const forms = document.querySelectorAll('.auth-form');
+            
+            tabs.forEach(t => {
+                t.style.color = t.dataset.tab === tab ? 'var(--text-primary)' : 'var(--text-muted)';
+                t.style.borderBottomColor = t.dataset.tab === tab ? 'var(--accent-primary)' : 'transparent';
+            });
+            
+            forms.forEach(f => {
+                f.style.display = f.id === `${tab}Form` ? 'block' : 'none';
+            });
+        }
+        
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                const response = await fetch(`${apiBaseUrl}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('authToken', data.token);
+                    authToken = data.token;
+                    userCredits = data.user.credits;
+                    
+                    updateUserInfo(data.user);
+                    closeAuthModal();
+                    showSuccessMessage('Login realizado com sucesso!');
+                } else {
+                    showAuthError(data.error);
+                }
+                
+            } catch (error) {
+                showAuthError('Erro de conexão. Tente novamente.');
+            }
+        }
+        
+        async function handleRegister(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            
+            try {
+                const response = await fetch(`${apiBaseUrl}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('authToken', data.token);
+                    authToken = data.token;
+                    userCredits = data.user.credits;
+                    
+                    updateUserInfo(data.user);
+                    closeAuthModal();
+                    showSuccessMessage('Conta criada com sucesso! Você ganhou 5 créditos gratuitos.');
+                } else {
+                    showAuthError(data.error);
+                }
+                
+            } catch (error) {
+                showAuthError('Erro de conexão. Tente novamente.');
+            }
+        }
+        
+        function showAuthError(message) {
+            const errorDiv = document.getElementById('authError');
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+        }
+        
+        function updateUserInfo(user) {
+            document.querySelector('.user-name').textContent = user.name;
+            userCredits = user.credits;
+            updateCreditsDisplay();
+        }
+        
+        function showSuccessMessage(message) {
+            const messageHtml = `
+                <div class="success-message" style="
+                    position: fixed; top: 20px; right: 20px; 
+                    background: var(--gradient-success); color: #000; 
+                    padding: 1rem; border-radius: 8px; z-index: 10001;
+                    font-weight: 600;
+                ">
+                    ${message}
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', messageHtml);
+            
+            setTimeout(() => {
+                const msg = document.querySelector('.success-message');
+                if (msg) msg.remove();
+            }, 3000);
+        }
+
+        // Auto-resize do textarea
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+        }
+
+        // Handle Enter para enviar
+        function handleKeyPress(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+
+        // Toggle sidebar mobile
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // Fechar sidebar ao clicar fora (mobile)
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(event.target) && 
+                !mobileBtn.contains(event.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Responsividade
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
